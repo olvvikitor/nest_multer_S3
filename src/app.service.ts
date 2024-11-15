@@ -19,7 +19,7 @@ export class AppService {
   ) { }
 
   async save(file: any): Promise<IFile> {
-    if(this.configService.get('ENVIROMENT') === 'dev'){
+    if(this.configService.get('ENVIRONMENT') === 'dev'){
       return {
         filePath: file.filename,
         fileUrl: `http://localhost:3000/uploads/${file.filename}`

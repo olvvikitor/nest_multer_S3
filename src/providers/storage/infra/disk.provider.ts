@@ -19,17 +19,33 @@ export class Diskprovider implements MulterOptionsFactory, IStorageProvider{
     }
   }
   async get(file: string): Promise<IFile> {
-    const filePath = path.join(__dirname, '..', 'uploads', file);
+    const filePath = path.join(__dirname,'..','..', '..', '..', 'uploads', file)
     const response:IFile = {
       filePath,
-      fileUrl: `http://localhost:3000/uploads/${filePath}`
+      fileUrl: `http://localhost:3000/uploads/${file}`
     }
     return response
 
   }
-  async delete(file: any): Promise<void> {
-    const filePath = path.resolve(__dirname, '..', '..', 'uploads', file)
-    await fs.promises.stat(filePath)
-    await fs.promises.unlink(filePath)
+  async delete(file: string): Promise<void> {
+    // Verifica o nome do arquivo que está sendo deletado
+    console.log(file);
+  
+    // Define corretamente o caminho completo para o arquivo dentro do diretório 'uploads'
+    const filePath = path.join(__dirname,'..','..', '..', '..', 'uploads', file)
+  
+    console.log(filePath);  // Imprime o caminho para garantir que está correto
+  
+    try {
+      // Verifique se o arquivo existe
+      await fs.promises.stat(filePath);
+      
+      // Se o arquivo existe, exclua
+      await fs.promises.unlink(filePath);
+      console.log(`Arquivo ${file} excluído com sucesso.`);
+    } catch (error) {
+      console.error('Erro ao tentar excluir o arquivo:', error);
+      throw new Error('Arquivo não encontrado');
+    }
   }
 }

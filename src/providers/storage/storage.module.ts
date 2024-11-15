@@ -21,7 +21,7 @@ import { S3StorageProvider } from './infra/S3.provider';
     S3StorageProvider,
     {
       provide: 'IStorageProvider', useFactory: async (configService: ConfigService, diskProvider: Diskprovider, s3StorageProvider: S3StorageProvider) => {
-        return new StorageFactory(configService, diskProvider, s3StorageProvider).createStorageProvider().createMulterOptions()
+        return new StorageFactory(configService, diskProvider, s3StorageProvider).createStorageProvider()
       },
       inject: [ConfigService, Diskprovider, S3StorageProvider]
     }

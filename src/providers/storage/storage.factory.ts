@@ -13,7 +13,7 @@ export class StorageFactory {
   ) {}
 
   createStorageProvider(): IStorageProvider {
-    const type = this.configService.get('ENVIROMENT');
+    const type = this.configService.get('ENVIRONMENT');
     if (type === 'dev') {
       return this.diskProvider;
     }
