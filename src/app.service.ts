@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@nestjs/common';
-import exp from 'constants';
 import { IStorageProvider } from './providers/storage/domain/storage.interface.provider';
 import { ConfigService } from '@nestjs/config';
 

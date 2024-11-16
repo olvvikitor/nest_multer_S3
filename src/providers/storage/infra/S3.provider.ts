@@ -39,5 +39,4 @@ export class S3StorageProvider implements MulterOptionsFactory, IStorageProvider
     })
   }
 
-  
 }
